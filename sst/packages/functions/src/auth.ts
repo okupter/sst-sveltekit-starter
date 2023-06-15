@@ -16,6 +16,9 @@ const getSessionParameter = (id: string) => {
 		type: 'user',
 		properties: {
 			id
+		},
+		options: {
+			expiresIn: 60 * 60 * 24 // 1 day
 		}
 	});
 };

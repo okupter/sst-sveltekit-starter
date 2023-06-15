@@ -5,13 +5,19 @@
 	import type { Users } from '../../sst/packages/core/src/sql.generated';
 
 	let session: Users | undefined = undefined;
+	let isLoading: boolean | undefined = undefined;
 
 	const getSession = async () => {
 		const sessionToken = window.localStorage.getItem('session');
 
 		if (sessionToken) {
+			isLoading = true;
+
 			const userInfo = await getUserInfo(sessionToken);
+			console.log(userInfo);
 			session = userInfo;
+
+			isLoading = false;
 		}
 	};
 
@@ -45,17 +51,19 @@
 	});
 </script>
 
-<nav class="container flex gap-4 py-4 mx-auto">
+<nav class="container flex items-center gap-4 py-4 mx-auto">
 	<div>
 		<a href="/" class:active={$page.url.pathname === '/'}>Home</a>
 	</div>
 
 	<div>
 		{#if !session}
-			<a href="/auth" class:active={$page.url.pathname === '/auth'}>Login</a>
+			{#if !isLoading}
+				<a href="/auth" class:active={$page.url.pathname === '/auth'}>Login</a>
+			{/if}
 		{:else}
 			<button
-				class="gap-4"
+				class="flex px-4 py-2 font-bold text-white bg-gray-900 rounded hover:bg-gray-700 w-fit"
 				on:click={() => {
 					window.localStorage.removeItem('session');
 					window.location.href = '/auth';
@@ -67,7 +75,7 @@
 	</div>
 </nav>
 
-<main class="container mx-auto">
+<main class="container py-8 mx-auto">
 	<slot />
 </main>
 
