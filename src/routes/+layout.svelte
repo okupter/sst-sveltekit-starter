@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import '$styles/app.postcss';
 	import { onMount } from 'svelte';
 	import type { Users } from '../../sst/packages/core/src/sql.generated';
 
@@ -44,16 +45,17 @@
 	});
 </script>
 
-<nav>
+<nav class="container flex gap-4 py-4 mx-auto">
 	<div>
-		<a href="/">Home</a>
+		<a href="/" class:active={$page.url.pathname === '/'}>Home</a>
 	</div>
 
 	<div>
 		{#if !session}
-			<a href="/auth">Login</a>
+			<a href="/auth" class:active={$page.url.pathname === '/auth'}>Login</a>
 		{:else}
 			<button
+				class="gap-4"
 				on:click={() => {
 					window.localStorage.removeItem('session');
 					window.location.href = '/auth';
@@ -65,11 +67,16 @@
 	</div>
 </nav>
 
-<slot />
+<main class="container mx-auto">
+	<slot />
+</main>
 
 <style>
-	nav {
-		display: flex;
-		gap: 1rem;
+	nav a {
+		@apply text-blue-700 text-lg;
+	}
+
+	nav a.active {
+		@apply font-bold;
 	}
 </style>
