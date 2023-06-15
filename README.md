@@ -86,9 +86,8 @@ pnpm sst deploy --stage prod
 
 This will make the deployement and output the application and API URLs.
 
-### Update the OAuth Authorized domains and callback URL
+### Update the OAuth callback URL
 
 From the previous step, you should have the API URL.
 
-- Copy the URL, and update the "Authorized domains" option in the OAuth consent screen of your Google application.
 - Go to the OAuth client you created earlier, and update the "Authorized redirect URIs" with the URL of the `API` stack suffixed with `/auth/google/callback`. For instance, if your API URL is https://xxxxxx.execute-api.us-east-1.amazonaws.com, then the callback URL will be https://xxxxxx.execute-api.us-east-1.amazonaws.com/auth/google/callback.
