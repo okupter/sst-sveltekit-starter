@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import type { Users } from '../../sst/packages/core/src/sql.generated';
@@ -11,7 +10,6 @@
 
 		if (sessionToken) {
 			const userInfo = await getUserInfo(sessionToken);
-			console.log(userInfo);
 			session = userInfo;
 		}
 	};
@@ -21,7 +19,7 @@
 
 		if (sessionToken) {
 			window.localStorage.setItem('session', sessionToken);
-			goto('/');
+			window.location.href = '/';
 		}
 	};
 
@@ -58,7 +56,7 @@
 			<button
 				on:click={() => {
 					window.localStorage.removeItem('session');
-					goto('/auth');
+					window.location.href = '/auth';
 				}}
 			>
 				Logout
