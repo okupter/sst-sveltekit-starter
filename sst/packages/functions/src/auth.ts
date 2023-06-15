@@ -1,5 +1,5 @@
 import { AuthHandler, GoogleAdapter, Session } from 'sst/node/auth';
-import { Config } from "sst/node/config";
+import { Config } from 'sst/node/config';
 import { createNewUser, getUserByEmail } from '../../core/src/users';
 
 declare module 'sst/node/auth' {
@@ -12,7 +12,7 @@ declare module 'sst/node/auth' {
 
 const getSessionParameter = (id: string) => {
 	return Session.parameter({
-		redirect: 'http://localhost:5173',
+		redirect: process.env.IS_LOCAL ? 'http://localhost:5173' : '',
 		type: 'user',
 		properties: {
 			id

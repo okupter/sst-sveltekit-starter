@@ -9,7 +9,7 @@ const SSTSvelteKitAPI = ({ stack }: StackContext) => {
 			}
 		},
 		routes: {
-			'GET /': 'sst/packages/functions/src/lambda.handler',
+			'GET /': 'sst/packages/functions/src/auth.handler',
 			'GET /session': 'sst/packages/functions/src/session.handler'
 		}
 	});
