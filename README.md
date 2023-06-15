@@ -39,7 +39,7 @@ Once these environment variables are set, SST will automatically load them insid
 
 The starter uses Google with OAuth `oidc` for authentication.
 
-For this to work, you need to create an application on [https://console.cloud.google.com](https://console.cloud.google.com), create an OAuth Client ID, and update the `.env` file with the `GOOGLE_API_CLIENT_ID`.
+For this to work, you need to create an application on [https://console.cloud.google.com](https://console.cloud.google.com), create an OAuth Client, and an OAuth consent screen, and update the `.env` file with the `GOOGLE_API_CLIENT_ID`.
 
 After you udpate the Google environment variable, run the following command:
 
@@ -48,6 +48,12 @@ pnpx sst secrets set GOOGLE_API_CLIENT_ID google_api_client_id
 ```
 
 to set the secret into SST's config secrets.
+
+#### Update the OAuth Authorized domains and callback URL
+
+- Run `pnpm sst dev` to start the SST environment locally. This will output in the terminal the `API` stack URL.
+- Copy the URL, and update the "Authorized domains" option in the OAuth consent screen of your Google application.
+- Go to the OAuth client you created earlier, and update the "Authorized redirect URIs" with the URL of the `API` stack suffixed with `/auth/google/callback`. For instance, if your API URL is https://xxxxxx.execute-api.us-east-1.amazonaws.com, then the callback URL will be https://xxxxxx.execute-api.us-east-1.amazonaws.com/auth/google/callback.
 
 ## Development
 
@@ -78,4 +84,11 @@ To deploy the application to AWS, run the following command:
 pnpm sst deploy --stage prod
 ```
 
-This will make the deployement and output the URL of the application.
+This will make the deployement and output the application and API URLs.
+
+### Update the OAuth Authorized domains and callback URL
+
+From the previous step, you should have the API URL.
+
+- Copy the URL, and update the "Authorized domains" option in the OAuth consent screen of your Google application.
+- Go to the OAuth client you created earlier, and update the "Authorized redirect URIs" with the URL of the `API` stack suffixed with `/auth/google/callback`. For instance, if your API URL is https://xxxxxx.execute-api.us-east-1.amazonaws.com, then the callback URL will be https://xxxxxx.execute-api.us-east-1.amazonaws.com/auth/google/callback.
