@@ -35,9 +35,47 @@ Follow this guide to create an IAM user for SST with the proper permissions: [ht
 
 Once these environment variables are set, SST will automatically load them inside the local [Live Lambda](https://docs.sst.dev/live-lambda-development).
 
-
 #### Google OAuth
 
 The starter uses Google with OAuth `oidc` for authentication.
 
 For this to work, you need to create an application on [https://console.cloud.google.com](https://console.cloud.google.com), create an OAuth Client ID, and update the `.env` file with the `GOOGLE_API_CLIENT_ID`.
+
+After you udpate the Google environment variable, run the following command:
+
+```bash
+pnpx sst secrets set GOOGLE_API_CLIENT_ID google_api_client_id
+```
+
+to set the secret into SST's config secrets.
+
+## Development
+
+In development, you can run SST's Live Lambda to run the application locally.
+
+```bash
+pnpm sst dev
+```
+
+This will ask you to choose a stage for the application.
+The stage is a sort of workspace that SST create to prefix all the resources with; to avoid name collisions.
+
+In another terminal, run the SvelteKit application:
+
+```bash
+pnpm dev
+```
+
+You can now access the [SST Console](https://docs.sst.dev/console) at this URL: [https://console.sst.dev/sst-sveltekit-starter](https://console.sst.dev/sst-sveltekit-starter).
+
+The `sst-sveltekit-starter` is the name of the SST infrastructure that was defined in `sst.config.ts`.
+
+## Deployment
+
+To deploy the application to AWS, run the following command:
+
+```bash
+pnpm sst deploy --stage prod
+```
+
+This will make the deployement and output the URL of the application.
