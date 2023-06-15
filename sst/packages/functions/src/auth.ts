@@ -1,5 +1,6 @@
 import { AuthHandler, GoogleAdapter, Session } from 'sst/node/auth';
 import { Config } from 'sst/node/config';
+import { SvelteKitSite } from 'sst/node/site';
 import { createNewUser, getUserByEmail } from '../../core/src/users';
 
 declare module 'sst/node/auth' {
@@ -12,7 +13,7 @@ declare module 'sst/node/auth' {
 
 const getSessionParameter = (id: string) => {
 	return Session.parameter({
-		redirect: process.env.IS_LOCAL ? 'http://localhost:5173' : '',
+		redirect: process.env.IS_LOCAL ? 'http://localhost:5173' : SvelteKitSite.site.url,
 		type: 'user',
 		properties: {
 			id

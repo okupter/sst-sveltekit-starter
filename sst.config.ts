@@ -17,8 +17,8 @@ export default {
 			.stack(SSTSvelteKitRDSDB)
 			.stack(SSTSvelteKitBucket)
 			.stack(SSTSvelteKitAPI)
-			.stack(SSTSvelteKitAuth)
-			.stack(SSTSvelteKitSite);
+			.stack(SSTSvelteKitSite)
+			.stack(SSTSvelteKitAuth);
 
 		if (app.stage !== 'prod') {
 			app.setDefaultRemovalPolicy('destroy');
