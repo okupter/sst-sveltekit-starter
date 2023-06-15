@@ -1,6 +1,6 @@
 import type { SSTConfig } from 'sst';
 import { SSTSvelteKitAPI } from './sst/stacks/Api';
-// import { SSTSvelteKitAuth } from './sst/stacks/Auth';
+import { SSTSvelteKitAuth } from './sst/stacks/Auth';
 import { SSTSvelteKitRDSDB } from './sst/stacks/Database';
 import { SSTSvelteKitSite } from './sst/stacks/Site';
 import { SSTSvelteKitBucket } from './sst/stacks/Storage';
@@ -17,6 +17,7 @@ export default {
 			.stack(SSTSvelteKitRDSDB)
 			.stack(SSTSvelteKitBucket)
 			.stack(SSTSvelteKitAPI)
+			.stack(SSTSvelteKitAuth)
 			.stack(SSTSvelteKitSite);
 
 		if (app.stage !== 'prod') {
