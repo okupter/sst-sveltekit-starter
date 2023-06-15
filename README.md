@@ -91,3 +91,12 @@ This will make the deployement and output the application and API URLs.
 From the previous step, you should have the API URL.
 
 - Go to the OAuth client you created earlier, and update the "Authorized redirect URIs" with the URL of the `API` stack suffixed with `/auth/google/callback`. For instance, if your API URL is https://xxxxxx.execute-api.us-east-1.amazonaws.com, then the callback URL will be https://xxxxxx.execute-api.us-east-1.amazonaws.com/auth/google/callback.
+
+## Next Steps
+
+They are a few things on the roadmap for this starter:
+
+- [ ] Create a walkthrough video guide
+- [ ] Add a basic CRUD with a new RDS table and relational data
+- [ ] Setup a CI/CD pipeline with GitHub Actions
+- [ ] Add new authentication providers (GitHub, Magic Link)
