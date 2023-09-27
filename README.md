@@ -1,6 +1,6 @@
 # SST SvelteKit Starter
 
-This is a starter template for a full stack application with [SvelteKit](https://kit.svelte.dev) and [SST](https://sst.dev).
+This is a starter template for a full stack application with [SvelteKit](https://kit.svelte.dev) and [SST](https://sst.dev), built and maintained by [Okupter](https://www.okupter.com).
 
 **SST** is a framework that makes it easy to build serverless apps on AWS. It provides a simple, composable, and framework agnostic stacks to define your serverless infrastructure.
 
